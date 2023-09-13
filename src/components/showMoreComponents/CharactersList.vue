@@ -4,30 +4,41 @@
         v-for="character in characters"
         :key="character.id"
         :character="character"
+        :isSelectable="isSelectable"
+        @heroSelected="heroSelected"
     />
   </div>
 </template>
-
 <script>
-import { computed, onMounted } from 'vue';
+import {onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
 import CharacterCard from '@/components/characters/CharacterCard';
 export default {
   components: {
     CharacterCard
   },
-  setup() {
+  props: {
+    isSelectable: Boolean
+  },
+  setup(_, { emit }) {
     const store = useStore();
+    const characters = computed(() => store.state.characters);
     onMounted(async () => {
       await store.dispatch('fetchCharacters');
+      emit('updateHeroList', characters.value);
     });
-    const characters = computed(() => store.state.characters);
+
     const charactersFromEarth = computed(() => store.getters.charactersFromEarth);
+
+    const heroSelected = (character) => {
+      emit('heroSelected', character);
+    };
     return {
       characters,
       charactersFromEarth,
+      heroSelected
     };
-  },
+  }
 };
 </script>
 <style scoped>
@@ -46,10 +57,12 @@ export default {
   border-radius: 50%;
   display: inline-block;
 }
+
 .green-text {
-  color:green;
+  color: green;
 }
+
 .red-text {
-  color:red;
+  color: red;
 }
 </style>

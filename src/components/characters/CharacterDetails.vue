@@ -4,7 +4,7 @@
     <div class="t-flex t-items-center t-text-sm">
       <span class="t-mr-1" :class="{'green-dot': character.status === 'Alive', 'red-dot': character.status === 'Dead'}"></span>
       <span class="t-mr-1 t-font-bold" :class="{'green-text': character.status === 'Alive', 'red-text': character.status === 'Dead'}"> {{ translateStatus(character.status) }} - </span>
-      <span class="">{{translateSpecies(character.species)}}</span>
+      <span>{{translateSpecies(character.species)}}</span>
     </div>
     <div class="t-flex t-text-xs" v-if="character.type">
       <span class="t-mr-1 t-text-yell t-font-bold">Typ:</span>
@@ -12,11 +12,11 @@
     </div>
     <div class="t-flex t-text-xs">
       <span class="t-mr-1 t-text-yell t-font-bold">Płeć: </span>
-      <span class="">{{translateGender(character.gender)}}</span>
+      <span>{{translateGender(character.gender)}}</span>
     </div>
     <div class="t-flex t-text-xs">
       <span class="t-mr-1 t-text-yell t-font-bold">Lokalizacja: </span>
-      <span class=""> {{ character.location.name }}</span>
+      <span> {{ character.location.name }}</span>
     </div>
   </div>
 </template>

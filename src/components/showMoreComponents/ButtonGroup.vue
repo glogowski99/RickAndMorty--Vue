@@ -1,35 +1,23 @@
 <template>
-  <div class="t-flex t-justify-between t-items-center t-my-6 t-w-2/5">
+  <div class="t-flex t-justify-center t-items-center t-my-6 t-w-2/5">
     <button
-        class="t-rounded-lg t-bg-turq t-px-10 t-py-2 t-text-white"
+        class="t-rounded-lg t-bg-turq t-px-10 t-py-2 t-text-white hover:t-shadow-md hover:t-shadow-yell t-transition-all"
+        @click="startGame"
     >
-      Wszystkie postacie
+      <slot></slot>
     </button>
-    <button
-        class="t-rounded-lg t-bg-turq t-px-10 t-py-2 t-text-white"
-    >
-      Postacie 1
-    </button>
-    <button
-        class="t-rounded-lg t-bg-turq t-px-10 t-py-2 t-text-white"
-    >
-      Postacie 3
-    </button>
-    <button
-        class="t-rounded-lg t-bg-turq t-px-10 t-py-2 t-text-white"
-    >
-      Postacie 4
-    </button>
-
   </div>
 </template>
-
 <script>
 export default {
-
+  setup(_, { emit }) {
+    const startGame = () => {
+      emit('start-game');
+    };
+    return {
+      startGame
+    };
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

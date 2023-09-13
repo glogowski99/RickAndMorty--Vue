@@ -12,12 +12,14 @@ export default createStore({
     },
     actions: {
         async fetchCharacters({ commit }) {
-            try {
-                const response = await instance.get('/character');
-                commit('setCharacters', response.data.results);
-            } catch (error) {
-                console.error('An error occurred while fetching data:', error);
-            }
+            return await instance.get('/character')
+                .then(response => {
+                    commit('setCharacters', response.data.results);
+                    return response;
+                }, error => {
+                    console.error('error:', error);
+                    return error;
+                });
         },
     },
     getters: {
