@@ -1,0 +1,24 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.home-button {
+    @apply t-px-14 t-py-4 t-border-2 t-rounded-lg t-border-yell t-text-yell t-transition-all;
+}
+.home-button-text {
+    @apply t-font-bold t-text-sm t-uppercase;
+}
+.flex-center {
+    @apply t-flex t-items-center t-justify-center;
+}
+.flex-center-between {
+    @apply t-flex t-items-center t-justify-between;
+}
+.flex-center-col {
+    @apply t-flex t-items-center t-justify-center t-flex-col;
+}
+.flex-start-center {
+    @apply t-flex t-items-start t-justify-center;
+}
